@@ -33,6 +33,45 @@ document.addEventListener("DOMContentLoaded", () => {
   onScroll();
   topButton.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
 
+  // Keep the desktop document untouched while presenting visitor priorities first on smaller screens.
+  const main = document.querySelector("main");
+  const originalMainChildren = [...main.children];
+  const visitorGuidelines = document.querySelector(".visitor-guidelines");
+  const guideDetails = document.querySelector(".guide-details");
+  const rulesContainer = document.querySelector("#rules .container");
+  const mobileQuery = window.matchMedia("(max-width: 850px)");
+  const mobileFlow = [
+    ".hero", "#guide", ".statistics", "#locations", "#experiences", "#rules",
+    "#stay-food", "#nearby", "#gallery", "#visitor-stories", "#about",
+    "#construction", "#people", "#zarabad", "#timeline", "#drone-video",
+    "#photo-stories", "#facts", ".testimonials", ".faq", "#contact"
+  ];
+
+  const syncMobileFlow = () => {
+    if (mobileQuery.matches) {
+      rulesContainer.append(visitorGuidelines);
+      mobileFlow.forEach(selector => {
+        const section = main.querySelector(`:scope > ${selector}`);
+        if (section) main.append(section);
+      });
+      document.querySelectorAll(".guideline-toggle").forEach(toggle => {
+        toggle.setAttribute("aria-expanded", "false");
+        toggle.querySelector("span").textContent = "+";
+      });
+    } else {
+      guideDetails.append(visitorGuidelines);
+      originalMainChildren.forEach(section => main.append(section));
+      document.querySelectorAll(".guideline-toggle").forEach(toggle => {
+        toggle.setAttribute("aria-expanded", "true");
+        toggle.querySelector("span").textContent = "−";
+      });
+    }
+    onScroll();
+  };
+
+  mobileQuery.addEventListener("change", syncMobileFlow);
+  syncMobileFlow();
+
   // Reveal content and animate numbers after they become visible
   const animated = new WeakSet();
   const observer = new IntersectionObserver(entries => {
@@ -71,6 +110,16 @@ document.addEventListener("DOMContentLoaded", () => {
         question.setAttribute("aria-expanded", "true");
         answer.classList.add("open");
       }
+    });
+  });
+
+  // Rules are compact accordions on mobile and remain fully expanded on desktop.
+  document.querySelectorAll(".guideline-toggle").forEach(toggle => {
+    toggle.addEventListener("click", () => {
+      if (!mobileQuery.matches) return;
+      const expanded = toggle.getAttribute("aria-expanded") === "true";
+      toggle.setAttribute("aria-expanded", String(!expanded));
+      toggle.querySelector("span").textContent = expanded ? "+" : "−";
     });
   });
 
