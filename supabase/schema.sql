@@ -7,6 +7,11 @@ create table if not exists public.review (
   created_at timestamptz not null default now()
 );
 
+-- `create table if not exists` does not change a pre-existing table. The live
+-- table predates the optional visitor name column, so add it explicitly.
+alter table public.review
+add column if not exists name text;
+
 alter table public.review enable row level security;
 
 drop policy if exists "Reviews are publicly readable" on public.review;
