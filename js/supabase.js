@@ -148,7 +148,7 @@ document.addEventListener("DOMContentLoaded", () => {
     grid.querySelector(".reviews-empty")?.remove();
     insertReviewFirst(createReviewCard(data));
     form.reset();
-    showStatus("Thank you! Your review has been added.");
+    showStatus("Thank you for sharing your experience with Hussaini Suspension Bridge!");
   });
 
   loadReviews();

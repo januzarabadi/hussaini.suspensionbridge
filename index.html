@@ -300,22 +300,6 @@
       </div>
     </section>
 
-    <!-- Share Your Adventure -->
-    <section class="section share-adventure" id="share-adventure">
-      <div class="container">
-        <div class="section-heading centered reveal">
-          <p class="eyebrow">Join the gallery</p>
-          <h2>Share Your Adventure</h2>
-          <p>Captured an unforgettable moment at Hussaini Suspension Bridge? We'd love to feature your photo in our visitor gallery.</p>
-        </div>
-        <div class="share-adventure-panel reveal">
-          <a class="button button-primary ripple" href="https://docs.google.com/forms/d/e/1FAIpQLScLdmZvg3vpBOU539xEmsvb7vzaPw3MziQ_g7yX2MAGFTfTDw/viewform?usp=dialog" target="_blank" rel="noopener">📷 Upload Photo</a>
-          <p class="form-note">Uploading photos requires signing in with a Google account.</p>
-          <p class="form-note muted">Submitted photos may be reviewed before appearing in the public gallery.</p>
-        </div>
-      </div>
-    </section>
-
     <!-- Did You Know -->
     <section class="section facts-section" id="facts">
       <div class="container">
@@ -373,39 +357,53 @@
     </div></section>
 
     <!-- Share Your Experience -->
-    <section class="section share-experience" id="share-experience">
+    <section class="section share-experience visitor-experience" id="share-experience">
       <div class="container">
         <div class="section-heading centered reveal">
           <p class="eyebrow">Visitor voices</p>
           <h2>Share Your Experience</h2>
           <p>Help future travelers by sharing your experience at Hussaini Suspension Bridge. Your feedback helps others plan their adventure with confidence.</p>
         </div>
-        <form class="visitor-form reveal" id="review-form" novalidate>
-          <div class="visitor-form-grid">
-            <label>Name <span>(Optional)</span>
-              <input type="text" name="name" id="review-name" placeholder="Your name" autocomplete="name">
-            </label>
-            <label>Country
-              <input type="text" name="country" id="review-country" placeholder="e.g. Pakistan" required autocomplete="country-name" maxlength="100">
-            </label>
-            <fieldset class="rating-field">
-              <legend>5-Star Rating</legend>
-              <div class="star-rating" role="radiogroup" aria-label="Star rating">
-                <input type="radio" id="rate-5" name="rating" value="5" required><label for="rate-5" title="5 stars">★</label>
-                <input type="radio" id="rate-4" name="rating" value="4"><label for="rate-4" title="4 stars">★</label>
-                <input type="radio" id="rate-3" name="rating" value="3"><label for="rate-3" title="3 stars">★</label>
-                <input type="radio" id="rate-2" name="rating" value="2"><label for="rate-2" title="2 stars">★</label>
-                <input type="radio" id="rate-1" name="rating" value="1"><label for="rate-1" title="1 star">★</label>
-              </div>
-            </fieldset>
-            <label class="full-width">Review
-              <textarea name="review" id="review-text" rows="5" placeholder="Tell us about your visit..." required minlength="10" maxlength="2000"></textarea>
-            </label>
+        <div class="visitor-experience-stack">
+          <form class="visitor-form reveal" id="review-form" novalidate>
+            <div class="visitor-form-grid">
+              <label>Name <span>(Optional)</span>
+                <input type="text" name="name" id="review-name" placeholder="Your name" autocomplete="name">
+              </label>
+              <label>Country
+                <input type="text" name="country" id="review-country" placeholder="e.g. Pakistan" required autocomplete="country-name" maxlength="100">
+              </label>
+              <fieldset class="rating-field">
+                <legend>5-Star Rating</legend>
+                <div class="star-rating" role="radiogroup" aria-label="Star rating">
+                  <input type="radio" id="rate-5" name="rating" value="5" required><label for="rate-5" title="5 stars">★</label>
+                  <input type="radio" id="rate-4" name="rating" value="4"><label for="rate-4" title="4 stars">★</label>
+                  <input type="radio" id="rate-3" name="rating" value="3"><label for="rate-3" title="3 stars">★</label>
+                  <input type="radio" id="rate-2" name="rating" value="2"><label for="rate-2" title="2 stars">★</label>
+                  <input type="radio" id="rate-1" name="rating" value="1"><label for="rate-1" title="1 star">★</label>
+                </div>
+              </fieldset>
+              <label class="full-width">Review
+                <textarea name="review" id="review-text" rows="5" placeholder="Tell us about your visit..." required minlength="10" maxlength="2000"></textarea>
+              </label>
+            </div>
+            <button class="button button-primary ripple" type="submit">Submit Review <span>→</span></button>
+            <p class="form-note">No account is required to submit a review.</p>
+            <p class="form-status" id="review-status" role="status" aria-live="polite" hidden>Thank you for sharing your experience with Hussaini Suspension Bridge!</p>
+          </form>
+          <div class="share-adventure reveal" id="share-adventure" aria-labelledby="share-adventure-title">
+            <div class="share-adventure-copy">
+              <p class="eyebrow">Join the gallery</p>
+              <h3 id="share-adventure-title">Share Your Adventure</h3>
+              <p>Captured an unforgettable moment at Hussaini Suspension Bridge? We'd love to feature your photo in our visitor gallery.</p>
+            </div>
+            <div class="share-adventure-panel">
+              <a class="button button-primary ripple" href="https://docs.google.com/forms/d/e/1FAIpQLScLdmZvg3vpBOU539xEmsvb7vzaPw3MziQ_g7yX2MAGFTfTDw/viewform?usp=dialog" target="_blank" rel="noopener">📷 Upload Photo</a>
+              <p class="form-note">Uploading photos requires signing in with a Google account.</p>
+              <p class="form-note muted">Submitted photos may be reviewed before appearing in the public gallery.</p>
+            </div>
           </div>
-          <button class="button button-primary ripple" type="submit">Submit Review <span>→</span></button>
-          <p class="form-note">No account is required to submit a review.</p>
-          <p class="form-status" id="review-status" role="status" aria-live="polite" hidden>Thank you! Your review has been added.</p>
-        </form>
+        </div>
       </div>
     </section>
 
