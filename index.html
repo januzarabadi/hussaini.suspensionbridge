@@ -286,11 +286,11 @@
     </section>
 
     <!-- Visitor Gallery -->
-    <section class="section visitor-stories" id="visitor-stories">
+    <section class="section visitor-stories" id="visitor-stories" aria-labelledby="visitor-memories-title">
       <div class="container">
         <div class="visitor-memories-heading reveal">
           <p class="eyebrow">Shared memories</p>
-          <h2>Visitor Memories</h2>
+          <h2 id="visitor-memories-title">Visitor Memories</h2>
           <p>Explore moments shared by travelers who visited Hussaini Suspension Bridge.</p>
         </div>
         <div class="visitor-showcase" aria-label="Featured visitor memories">
@@ -300,7 +300,7 @@
           <button class="visitor-card visitor-card-wide reveal" data-image="images/visitor-4.jpg" data-caption="Noah Williams · United Kingdom · 2022"><img src="images/visitor-4.jpg" alt="Noah Williams visiting Hussaini Suspension Bridge" loading="lazy"><span><strong>Noah Williams</strong><small>United Kingdom · 2022</small></span></button>
         </div>
         <div class="visitor-memories-actions reveal">
-          <button class="text-link visitor-memories-trigger" type="button" aria-haspopup="dialog" aria-controls="all-memories-dialog">View All Memories <span>→</span></button>
+          <button class="visitor-memories-button visitor-memories-trigger" type="button" aria-haspopup="dialog" aria-controls="all-memories-dialog">View All Memories <span aria-hidden="true">→</span></button>
         </div>
         <div class="visitor-upload reveal" aria-labelledby="visitor-upload-title">
           <div>
