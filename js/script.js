@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
   onScroll();
   topButton.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
 
-  // Keep the review and linked photo-upload experience together on smaller screens.
+  // Keep visitor memories, review submission, and published reviews together on smaller screens.
   const main = document.querySelector("main");
   const originalMainChildren = [...main.children];
   const visitorGuidelines = document.querySelector(".visitor-guidelines");
@@ -42,9 +42,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const mobileQuery = window.matchMedia("(max-width: 850px)");
   const mobileFlow = [
     ".hero", "#guide", ".statistics", "#locations", "#experiences", "#rules",
-    "#stay-food", "#nearby", "#gallery", "#visitor-stories", "#about",
+    "#stay-food", "#nearby", "#gallery", "#about",
     "#construction", "#people", "#zarabad", "#timeline", "#drone-video",
-    "#photo-stories", "#facts", "#reviews", "#share-experience", ".faq", "#contact"
+    "#photo-stories", "#facts", "#visitor-stories", "#share-experience", "#reviews", ".faq", "#contact"
   ];
 
   const syncMobileFlow = () => {
