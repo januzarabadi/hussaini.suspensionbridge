@@ -300,6 +300,22 @@
       </div>
     </section>
 
+    <!-- Share Your Adventure -->
+    <section class="section share-adventure" id="share-adventure">
+      <div class="container">
+        <div class="section-heading centered reveal">
+          <p class="eyebrow">Join the gallery</p>
+          <h2>Share Your Adventure</h2>
+          <p>Captured an unforgettable moment at Hussaini Suspension Bridge? We'd love to feature your photo in our visitor gallery.</p>
+        </div>
+        <div class="share-adventure-panel reveal">
+          <a class="button button-primary ripple" href="https://forms.gle/placeholder-hussaini-photo-upload" target="_blank" rel="noopener">📷 Upload Photo</a>
+          <p class="form-note">Uploading photos requires signing in with a Google account.</p>
+          <p class="form-note muted">Submitted photos may be reviewed before appearing in the public gallery.</p>
+        </div>
+      </div>
+    </section>
+
     <!-- Did You Know -->
     <section class="section facts-section" id="facts">
       <div class="container">
@@ -349,14 +365,51 @@
     </section>
 
     <!-- Reviews -->
-    <section class="section testimonials"><div class="container">
+    <section class="section testimonials" id="reviews"><div class="container">
       <div class="section-heading centered reveal"><p class="eyebrow">Stories from the trail</p><h2>Carried home in memory.</h2></div>
-      <div class="testimonial-grid">
+      <div class="testimonial-grid" id="testimonial-grid">
         <figure class="testimonial reveal"><div class="stars">★★★★★</div><blockquote>“The bridge was thrilling, but the kindness of the people and the silence of the peaks were what stayed with me.”</blockquote><figcaption><span class="avatar">MM</span><span><strong>MK Musofeer</strong><small>Lahore, Pakistan</small></span></figcaption></figure>
         <figure class="testimonial reveal"><div class="stars">★★★★★</div><blockquote>“A place that makes you feel wonderfully small. Every turn on the Karakoram Highway was a postcard.”</blockquote><figcaption><span class="avatar teal">MA</span><span><strong>Musaf Ali</strong><small>Dubai, UAE</small></span></figcaption></figure>
         <figure class="testimonial reveal"><div class="stars">★★★★★</div><blockquote>“The ultimate adventure for photographers. Sunrise at Passu and the bridge at dusk: absolutely unforgettable.”</blockquote><figcaption><span class="avatar gold">MU</span><span><strong>Mushu</strong><small>New York City, USA</small></span></figcaption></figure>
       </div>
     </div></section>
+
+    <!-- Share Your Experience -->
+    <section class="section share-experience" id="share-experience">
+      <div class="container">
+        <div class="section-heading centered reveal">
+          <p class="eyebrow">Visitor voices</p>
+          <h2>Share Your Experience</h2>
+          <p>Help future travelers by sharing your experience at Hussaini Suspension Bridge. Your feedback helps others plan their adventure with confidence.</p>
+        </div>
+        <form class="visitor-form reveal" id="review-form" novalidate>
+          <div class="visitor-form-grid">
+            <label>Name <span>(Optional)</span>
+              <input type="text" name="name" id="review-name" placeholder="Your name" autocomplete="name">
+            </label>
+            <label>Country / City
+              <input type="text" name="location" id="review-location" placeholder="e.g. Lahore, Pakistan" required autocomplete="address-level2">
+            </label>
+            <fieldset class="rating-field">
+              <legend>5-Star Rating</legend>
+              <div class="star-rating" role="radiogroup" aria-label="Star rating">
+                <input type="radio" id="rate-5" name="rating" value="5" required><label for="rate-5" title="5 stars">★</label>
+                <input type="radio" id="rate-4" name="rating" value="4"><label for="rate-4" title="4 stars">★</label>
+                <input type="radio" id="rate-3" name="rating" value="3"><label for="rate-3" title="3 stars">★</label>
+                <input type="radio" id="rate-2" name="rating" value="2"><label for="rate-2" title="2 stars">★</label>
+                <input type="radio" id="rate-1" name="rating" value="1"><label for="rate-1" title="1 star">★</label>
+              </div>
+            </fieldset>
+            <label class="full-width">Review
+              <textarea name="review" id="review-text" rows="5" placeholder="Tell us about your visit..." required></textarea>
+            </label>
+          </div>
+          <button class="button button-primary ripple" type="submit">Submit Review <span>→</span></button>
+          <p class="form-note">No account is required to submit a review.</p>
+          <p class="form-status" id="review-status" role="status" aria-live="polite" hidden>Thank you! Your review has been added.</p>
+        </form>
+      </div>
+    </section>
 
     <!-- FAQ -->
     <section class="section faq"><div class="container faq-layout"><div class="reveal"><p class="eyebrow">Need to know</p><h2>Questions, answered.</h2><p>Still wondering? Our local trip team is happy to help you plan.</p><a class="text-link" href="#contact">Contact our team <span>→</span></a></div>

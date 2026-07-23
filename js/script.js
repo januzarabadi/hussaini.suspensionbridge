@@ -42,9 +42,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const mobileQuery = window.matchMedia("(max-width: 850px)");
   const mobileFlow = [
     ".hero", "#guide", ".statistics", "#locations", "#experiences", "#rules",
-    "#stay-food", "#nearby", "#gallery", "#visitor-stories", "#about",
+    "#stay-food", "#nearby", "#gallery", "#visitor-stories", "#share-adventure", "#about",
     "#construction", "#people", "#zarabad", "#timeline", "#drone-video",
-    "#photo-stories", "#facts", ".testimonials", ".faq", "#contact"
+    "#photo-stories", "#facts", "#reviews", "#share-experience", ".faq", "#contact"
   ];
 
   const syncMobileFlow = () => {
@@ -167,5 +167,114 @@ document.addEventListener("DOMContentLoaded", () => {
       button.appendChild(ripple);
     });
   });
+
+  // Visitor reviews — no account required; newest first in the Reviews section
+  const reviewForm = document.getElementById("review-form");
+  const reviewGrid = document.getElementById("testimonial-grid");
+  const reviewStatus = document.getElementById("review-status");
+  const reviewStorageKey = "hsb-visitor-reviews";
+  const avatarStyles = ["", "teal", "gold"];
+
+  const escapeHtml = value => String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+
+  const getInitials = name => {
+    const parts = name.trim().split(/\s+/).filter(Boolean);
+    if (!parts.length) return "GV";
+    if (parts.length === 1) return parts[0].slice(0, 2).toUpperCase();
+    return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+  };
+
+  const starString = rating => "★".repeat(rating) + "☆".repeat(5 - rating);
+
+  const createReviewCard = (review, index = 0) => {
+    const name = review.name?.trim() || "Guest Visitor";
+    const location = review.location.trim();
+    const text = review.text.trim();
+    const rating = Number(review.rating) || 5;
+    const avatarClass = avatarStyles[index % avatarStyles.length];
+    const figure = document.createElement("figure");
+    figure.className = "testimonial reveal in-view visitor-review";
+    figure.innerHTML = `
+      <div class="stars" aria-label="${rating} out of 5 stars">${starString(rating)}</div>
+      <blockquote>“${escapeHtml(text)}”</blockquote>
+      <figcaption>
+        <span class="avatar${avatarClass ? ` ${avatarClass}` : ""}">${escapeHtml(getInitials(name))}</span>
+        <span>
+          <strong>${escapeHtml(name)}</strong>
+          <small>${escapeHtml(location)}</small>
+        </span>
+      </figcaption>
+    `;
+    return figure;
+  };
+
+  const loadStoredReviews = () => {
+    try {
+      const raw = localStorage.getItem(reviewStorageKey);
+      return raw ? JSON.parse(raw) : [];
+    } catch {
+      return [];
+    }
+  };
+
+  const saveReviews = reviews => {
+    try {
+      localStorage.setItem(reviewStorageKey, JSON.stringify(reviews));
+    } catch {
+      /* storage may be unavailable */
+    }
+  };
+
+  if (reviewForm && reviewGrid) {
+    const insertVisitorReview = card => {
+      const firstVisitor = reviewGrid.querySelector(".visitor-review");
+      if (firstVisitor) reviewGrid.insertBefore(card, firstVisitor);
+      else reviewGrid.append(card);
+    };
+
+    const stored = loadStoredReviews();
+    // Oldest first so insert-before-first keeps newest visitor reviews at the top of the visitor block
+    [...stored].reverse().forEach((review, index) => {
+      insertVisitorReview(createReviewCard(review, index));
+    });
+
+    reviewForm.addEventListener("submit", event => {
+      event.preventDefault();
+      const name = document.getElementById("review-name").value.trim();
+      const location = document.getElementById("review-location").value.trim();
+      const text = document.getElementById("review-text").value.trim();
+      const ratingInput = reviewForm.querySelector('input[name="rating"]:checked');
+
+      if (!location || !text || !ratingInput) {
+        reviewForm.reportValidity();
+        return;
+      }
+
+      const review = {
+        name,
+        location,
+        text,
+        rating: Number(ratingInput.value),
+        createdAt: Date.now()
+      };
+
+      const reviews = loadStoredReviews();
+      reviews.unshift(review);
+      saveReviews(reviews);
+
+      insertVisitorReview(createReviewCard(review, 0));
+      reviewForm.reset();
+      reviewStatus.hidden = false;
+      reviewStatus.textContent = "Thank you! Your review has been added.";
+      window.setTimeout(() => {
+        reviewStatus.hidden = true;
+      }, 4500);
+    });
+  }
 
 });
