@@ -918,8 +918,16 @@ h3 {
   font-size: 0.82rem;
   font-weight: 600;
 }
+.visitor-form .form-status.error {
+  color: #b91c1c;
+}
 .visitor-form .form-status[hidden] {
   display: none;
+}
+.visitor-form .button:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+  transform: none;
 }
 /* Share Your Adventure */
 .share-adventure {

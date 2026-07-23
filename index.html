@@ -387,8 +387,8 @@
             <label>Name <span>(Optional)</span>
               <input type="text" name="name" id="review-name" placeholder="Your name" autocomplete="name">
             </label>
-            <label>Country / City
-              <input type="text" name="location" id="review-location" placeholder="e.g. Lahore, Pakistan" required autocomplete="address-level2">
+            <label>Country
+              <input type="text" name="country" id="review-country" placeholder="e.g. Pakistan" required autocomplete="country-name" maxlength="100">
             </label>
             <fieldset class="rating-field">
               <legend>5-Star Rating</legend>
@@ -401,7 +401,7 @@
               </div>
             </fieldset>
             <label class="full-width">Review
-              <textarea name="review" id="review-text" rows="5" placeholder="Tell us about your visit..." required></textarea>
+              <textarea name="review" id="review-text" rows="5" placeholder="Tell us about your visit..." required minlength="10" maxlength="2000"></textarea>
             </label>
           </div>
           <button class="button button-primary ripple" type="submit">Submit Review <span>→</span></button>
@@ -440,6 +440,9 @@
 
   <button class="scroll-top" aria-label="Scroll to top">↑</button>
   <dialog class="lightbox" aria-label="Image viewer"><button class="lightbox-close" aria-label="Close image viewer">×</button><img src="" alt=""><p></p></dialog>
+  <script src="js/supabase-config.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase.js"></script>
   <script src="js/script.js"></script>
 </body>
 </html>
