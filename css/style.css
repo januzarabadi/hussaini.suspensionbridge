@@ -2,18 +2,25 @@
 :root {
   --ink: #0f172a;
   --surface: #ffffff;
-  --mist: #f8fafc;
-  --text: #334155;
-  --muted: #64748b;
-  --line: #e2e8f0;
+  --mist: #f1f5f9;
+  --text: #1e293b;
+  --muted: #475569;
+  --line: #cbd5e1;
   --primary: #14b8a6;
-  --primary-hover: #0f9f94;
-  --secondary: #1e293b;
-  --accent: #d9f8f4;
+  --primary-hover: #0d9488;
+  --secondary: #0f172a;
+  --accent: #ccfbf1;
+  --gold: #f59e0b;
+  --link: #0d9488;
+  --link-hover: #0f766e;
+  --footer-text: #e2e8f0;
+  --footer-muted: #cbd5e1;
   --poppins: "Poppins", sans-serif;
   --inter: "Inter", sans-serif;
   --radius: 20px;
-  --shadow: 0 16px 40px rgba(15, 23, 42, 0.1);
+  --shadow: 0 18px 44px rgba(15, 23, 42, 0.14);
+  --shadow-card: 0 8px 28px rgba(15, 23, 42, 0.1);
+  --shadow-card-hover: 0 20px 48px rgba(15, 23, 42, 0.16);
 }
 
 /* Reset and global styles */
@@ -75,9 +82,12 @@ h3 {
 h2 {
   font-size: clamp(2rem, 4vw, 3.55rem);
   color: var(--ink);
+  font-weight: 700;
 }
 h3 {
   font-size: 1.15rem;
+  color: var(--ink);
+  font-weight: 700;
 }
 .eyebrow {
   margin-bottom: 13px;
@@ -88,7 +98,7 @@ h3 {
   text-transform: uppercase;
 }
 .eyebrow.light {
-  color: var(--accent);
+  color: #5eead4;
 }
 .section {
   padding: 120px 0;
@@ -311,13 +321,13 @@ h3 {
 }
 .button-primary {
   background: var(--primary);
-  color: var(--ink);
+  color: var(--surface);
 }
 .button-primary:hover {
   background: var(--primary-hover);
 }
 .button-dark {
-  background: var(--ink);
+  background: var(--secondary);
   color: var(--surface);
 }
 .button-ghost {
@@ -443,13 +453,17 @@ h3 {
   display: inline-flex;
   gap: 10px;
   align-items: center;
-  color: var(--primary);
+  color: var(--link);
   font-size: 0.8rem;
   font-weight: 700;
+  transition: color 0.25s ease;
 }
 .text-link span {
   font-size: 1.15rem;
   transition: transform 0.2s;
+}
+.text-link:hover {
+  color: var(--link-hover);
 }
 .text-link:hover span {
   transform: translateX(5px);
@@ -599,18 +613,19 @@ h3 {
 }
 .experience-card {
   padding: 29px;
-  border: 1px solid transparent;
+  border: 1px solid var(--line);
   border-radius: var(--radius);
   background: var(--surface);
+  box-shadow: var(--shadow-card);
   transition:
     transform 0.3s,
     box-shadow 0.3s,
     border-color 0.3s;
 }
 .experience-card:hover {
-  transform: translateY(-8px);
-  box-shadow: var(--shadow);
-  border-color: var(--line);
+  transform: translateY(-10px);
+  box-shadow: var(--shadow-card-hover);
+  border-color: var(--primary);
 }
 .card-icon {
   display: grid;
@@ -738,11 +753,12 @@ h3 {
   margin: 0;
   padding: 28px;
   background: var(--surface);
+  border: 1px solid var(--line);
   border-radius: var(--radius);
-  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.04);
+  box-shadow: var(--shadow-card);
 }
 .stars {
-  color: var(--primary);
+  color: var(--gold);
   letter-spacing: 2px;
   font-size: 0.77rem;
 }
@@ -774,8 +790,8 @@ h3 {
   color: var(--primary);
 }
 .avatar.gold {
-  background: var(--accent);
-  color: var(--primary);
+  background: rgba(245, 158, 11, 0.18);
+  color: var(--gold);
 }
 .testimonial figcaption strong,
 .testimonial figcaption small {
@@ -933,7 +949,7 @@ h3 {
 }
 .footer-grid > div > p {
   font-size: 0.76rem;
-  color: var(--line);
+  color: var(--footer-muted);
 }
 .footer-grid h3 {
   margin: 0 0 13px;
@@ -944,7 +960,11 @@ h3 {
   display: block;
   margin: 7px 0;
   font-size: 0.75rem;
-  color: var(--line);
+  color: var(--footer-text);
+  transition: color 0.25s ease;
+}
+.footer-grid > div > a:not(.brand):hover {
+  color: var(--primary);
 }
 .socials {
   display: flex;
@@ -979,7 +999,7 @@ h3 {
   border: 0;
   border-radius: 50%;
   background: var(--primary);
-  color: var(--ink);
+  color: var(--surface);
   font-size: 1.15rem;
   opacity: 0;
   visibility: hidden;
@@ -1472,19 +1492,19 @@ h3 {
 .fact-card {
   min-height: 166px;
   padding: 23px;
-  border: 1px solid transparent;
+  border: 1px solid var(--line);
   border-radius: var(--radius);
   background: var(--surface);
-  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.04);
+  box-shadow: var(--shadow-card);
   transition:
     transform 0.3s,
     box-shadow 0.3s,
     border-color 0.3s;
 }
 .fact-card:hover {
-  border-color: var(--line);
-  box-shadow: var(--shadow);
-  transform: translateY(-6px);
+  border-color: var(--primary);
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-8px);
 }
 .fact-card span {
   display: block;
@@ -1559,19 +1579,19 @@ h3 {
 }
 .place-card {
   overflow: hidden;
-  border: 1px solid transparent;
+  border: 1px solid var(--line);
   border-radius: var(--radius);
   background: var(--surface);
-  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.05);
+  box-shadow: var(--shadow-card);
   transition:
     transform 0.35s,
     box-shadow 0.35s,
     border-color 0.35s;
 }
 .place-card:hover {
-  border-color: var(--line);
-  box-shadow: var(--shadow);
-  transform: translateY(-8px);
+  border-color: var(--primary);
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-10px);
 }
 .place-card > img {
   display: block;
@@ -1595,7 +1615,7 @@ h3 {
   font-size: 0.65rem;
 }
 .place-rating {
-  color: var(--primary);
+  color: var(--gold);
   font-weight: 700;
   white-space: nowrap;
 }
@@ -2051,7 +2071,7 @@ h3 {
   font-size: 0.85rem;
 }
 .ticket-price {
-  color: var(--primary);
+  color: var(--gold);
   font-family: var(--poppins);
   font-size: 1.15rem;
   font-weight: 700;
@@ -2587,6 +2607,14 @@ h3 {
 .skip-link,
 .image-badge,
 .gallery,
+.about,
+.construction,
+.guide,
+.zarabad,
+.photo-stories,
+.visitor-stories,
+.nearby,
+.faq,
 .experience-card,
 .testimonial,
 .place-card,
@@ -2614,13 +2642,13 @@ h3 {
 }
 .button-primary {
   background: var(--primary);
-  color: var(--ink);
+  color: var(--surface);
 }
 .button-primary:hover {
   background: var(--primary-hover);
 }
 .button-dark {
-  background: var(--ink);
+  background: var(--secondary);
   color: var(--surface);
 }
 .button-ghost {
@@ -2630,12 +2658,13 @@ h3 {
 .experience-card a,
 .place-actions a,
 .quick-info-card small {
-  color: var(--primary);
+  color: var(--link);
+  transition: color 0.25s ease;
 }
 .text-link:hover,
 .experience-card a:hover,
 .place-actions a:hover {
-  color: var(--primary-hover);
+  color: var(--link-hover);
 }
 .feature-icon,
 .card-icon,
@@ -2655,9 +2684,31 @@ h3 {
 .rules-section {
   background: var(--mist);
 }
+.gallery,
+.about,
+.construction,
+.guide,
+.zarabad,
+.photo-stories,
+.visitor-stories,
+.nearby,
+.faq {
+  background: var(--surface);
+}
+.experience-card,
+.testimonial,
+.place-card,
+.fact-card,
+.ticket-info,
+.visitor-guidelines {
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-card);
+}
 .experience-card:hover,
-.place-card:hover {
-  border-color: var(--accent);
+.place-card:hover,
+.fact-card:hover {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-card-hover);
 }
 .guide-list,
 .guide-item,
@@ -2681,8 +2732,11 @@ h3 {
 .construction-facts div,
 .quick-info-card {
   background: var(--mist);
+  border: 1px solid var(--line);
 }
-.ticket-price,
+.ticket-price {
+  color: var(--gold);
+}
 .construction-facts dt,
 .place-type,
 .distance-list strong {
@@ -2702,8 +2756,8 @@ h3 {
   color: var(--ink);
 }
 .place-actions a {
-  border-color: var(--accent);
-  color: var(--primary);
+  border-color: var(--primary);
+  color: var(--link);
 }
 .place-actions a:last-child {
   border-color: var(--line);
@@ -2715,8 +2769,8 @@ h3 {
   color: var(--surface);
 }
 .place-actions a:last-child:hover {
-  background: var(--ink);
-  border-color: var(--ink);
+  background: var(--secondary);
+  border-color: var(--secondary);
   color: var(--surface);
 }
 .drone-video,
@@ -2728,14 +2782,17 @@ h3 {
   background: var(--line);
 }
 .avatar,
-.avatar.teal,
-.avatar.gold {
+.avatar.teal {
   background: var(--accent);
   color: var(--primary);
 }
+.avatar.gold {
+  background: rgba(245, 158, 11, 0.18);
+  color: var(--gold);
+}
 .stars,
 .place-rating {
-  color: var(--primary);
+  color: var(--gold);
 }
 .visit-section,
 .site-footer {
@@ -2743,16 +2800,16 @@ h3 {
 }
 .visit-card,
 .visit-cta {
-  border-color: rgba(20, 184, 166, 0.28);
-  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(20, 184, 166, 0.35);
+  background: rgba(255, 255, 255, 0.08);
 }
 .visit-card:hover {
-  border-color: rgba(20, 184, 166, 0.6);
-  background: rgba(255, 255, 255, 0.11);
+  border-color: rgba(20, 184, 166, 0.65);
+  background: rgba(255, 255, 255, 0.12);
 }
 .visit-icon {
   background: var(--primary);
-  color: var(--ink);
+  color: var(--surface);
 }
 .visit-card li:before {
   background: var(--primary);
@@ -2762,23 +2819,40 @@ h3 {
   border-color: var(--primary);
 }
 .site-footer {
-  color: var(--line);
+  color: var(--footer-text);
 }
-.footer-grid > div > p,
+.footer-grid > div > p {
+  color: var(--footer-muted);
+}
 .footer-grid > div > a:not(.brand) {
-  color: var(--line);
+  color: var(--footer-text);
+}
+.footer-grid > div > a:not(.brand):hover {
+  color: var(--primary);
+}
+.footer-grid h3 {
+  color: var(--surface);
 }
 .footer-bottom {
-  border-color: rgba(226, 232, 240, 0.18);
-  color: var(--line);
+  border-color: rgba(226, 232, 240, 0.22);
+  color: var(--footer-muted);
 }
 .socials a {
-  border-color: rgba(226, 232, 240, 0.32);
+  border-color: rgba(226, 232, 240, 0.4);
+  color: var(--footer-text);
+}
+.socials a:hover {
+  border-color: var(--primary);
+  color: var(--primary);
 }
 .scroll-top {
   background: var(--primary);
-  color: var(--ink);
+  color: var(--surface);
 }
 .scroll-top:hover {
   background: var(--primary-hover);
+}
+.nav-menu > a:hover,
+.nav-menu > a.active {
+  color: var(--primary);
 }
