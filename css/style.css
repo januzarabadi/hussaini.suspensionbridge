@@ -754,6 +754,13 @@ h3 {
   grid-template-columns: repeat(3, 1fr);
   gap: 18px;
 }
+.reviews-loading,
+.reviews-empty {
+  grid-column: 1/-1;
+  margin: 0;
+  color: var(--muted);
+  text-align: center;
+}
 .testimonial {
   margin: 0;
   padding: 28px;

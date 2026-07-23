@@ -1,13 +1,15 @@
 /* Persistent public visitor reviews powered by Supabase. */
+import { createClient } from "@supabase/supabase-js";
+
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("review-form");
   const grid = document.getElementById("testimonial-grid");
   const status = document.getElementById("review-status");
+  const loading = document.getElementById("reviews-loading");
 
   if (!form || !grid || !status) return;
 
   const config = window.HSB_SUPABASE_CONFIG || {};
-  const createClient = window.supabase?.createClient;
   const submitButton = form.querySelector('button[type="submit"]');
   const avatarStyles = ["", "teal", "gold"];
 
@@ -17,16 +19,17 @@ document.addEventListener("DOMContentLoaded", () => {
     status.classList.toggle("error", isError);
   };
 
-  if (!config.url || !config.anonKey || !createClient) {
+  if (!config.url || !config.publishableKey) {
+    loading?.remove();
     showStatus(
-      "Reviews are temporarily unavailable. Add the Supabase URL and anon key to js/supabase-config.js.",
+      "Reviews are temporarily unavailable. Add the Supabase URL and publishable key to js/supabase-config.js.",
       true
     );
     submitButton.disabled = true;
     return;
   }
 
-  const client = createClient(config.url, config.anonKey);
+  const client = createClient(config.url, config.publishableKey);
 
   const getInitials = name => {
     const parts = name.trim().split(/\s+/).filter(Boolean);
@@ -71,16 +74,16 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const insertReviewFirst = card => {
-    const firstVisitorReview = grid.querySelector(".visitor-review");
-    if (firstVisitorReview) grid.insertBefore(card, firstVisitorReview);
-    else grid.append(card);
+    grid.prepend(card);
   };
 
   const loadReviews = async () => {
     const { data, error } = await client
-      .from("reviews")
+      .from("review")
       .select("id, name, country, rating, review, created_at")
       .order("created_at", { ascending: false });
+
+    loading?.remove();
 
     if (error) {
       console.error("Could not load reviews:", error);
@@ -88,7 +91,14 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    grid.querySelectorAll(".visitor-review").forEach(card => card.remove());
+    if (!data.length) {
+      const empty = document.createElement("p");
+      empty.className = "reviews-empty";
+      empty.textContent = "Be the first to share your experience.";
+      grid.append(empty);
+      return;
+    }
+
     data.forEach((review, index) => grid.append(createReviewCard(review, index)));
   };
 
@@ -116,7 +126,7 @@ document.addEventListener("DOMContentLoaded", () => {
     submitButton.setAttribute("aria-busy", "true");
 
     const { data, error } = await client
-      .from("reviews")
+      .from("review")
       .insert({
         name: name || null,
         country,
@@ -135,6 +145,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
+    grid.querySelector(".reviews-empty")?.remove();
     insertReviewFirst(createReviewCard(data));
     form.reset();
     showStatus("Thank you! Your review has been added.");

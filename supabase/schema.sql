@@ -1,4 +1,4 @@
-create table if not exists public.reviews (
+create table if not exists public.review (
   id uuid primary key default gen_random_uuid(),
   name text check (name is null or char_length(name) between 1 and 100),
   country text not null check (char_length(country) between 2 and 100),
@@ -7,18 +7,18 @@ create table if not exists public.reviews (
   created_at timestamptz not null default now()
 );
 
-alter table public.reviews enable row level security;
+alter table public.review enable row level security;
 
-drop policy if exists "Reviews are publicly readable" on public.reviews;
+drop policy if exists "Reviews are publicly readable" on public.review;
 create policy "Reviews are publicly readable"
-on public.reviews
+on public.review
 for select
 to anon, authenticated
 using (true);
 
-drop policy if exists "Anyone can submit a review" on public.reviews;
+drop policy if exists "Anyone can submit a review" on public.review;
 create policy "Anyone can submit a review"
-on public.reviews
+on public.review
 for insert
 to anon, authenticated
 with check (
@@ -28,8 +28,8 @@ with check (
   and (name is null or char_length(name) between 1 and 100)
 );
 
-grant select, insert on table public.reviews to anon, authenticated;
-revoke update, delete on table public.reviews from anon, authenticated;
+grant select, insert on table public.review to anon, authenticated;
+revoke update, delete on table public.review from anon, authenticated;
 
-create index if not exists reviews_created_at_idx
-on public.reviews (created_at desc);
+create index if not exists review_created_at_idx
+on public.review (created_at desc);

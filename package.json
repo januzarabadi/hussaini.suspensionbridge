@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "@supabase/supabase-js": "^2.110.8"
+  },
+  "scripts": {
+    "build": "esbuild js/supabase.js --bundle --format=iife --target=es2020 --outfile=js/supabase.bundle.js",
+    "start": "esbuild js/supabase.js --bundle --format=iife --target=es2020 --outfile=js/supabase.bundle.js --servedir=. --serve=8080"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.0"
+  }
+}
