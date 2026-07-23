@@ -127,8 +127,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const lightbox = document.querySelector(".lightbox");
   const lightboxImage = lightbox.querySelector("img");
   const lightboxCaption = lightbox.querySelector("p");
+  const allMemoriesDialog = document.querySelector(".all-memories-dialog");
   document.querySelectorAll(".gallery-item, .visitor-card").forEach(item => {
     item.addEventListener("click", () => {
+      if (allMemoriesDialog.open) allMemoriesDialog.close();
       lightboxImage.src = item.dataset.image;
       lightboxImage.alt = item.querySelector("img").alt;
       lightboxCaption.textContent = item.dataset.caption;
@@ -137,6 +139,9 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   document.querySelector(".lightbox-close").addEventListener("click", () => lightbox.close());
   lightbox.addEventListener("click", event => { if (event.target === lightbox) lightbox.close(); });
+  document.querySelector(".visitor-memories-trigger").addEventListener("click", () => allMemoriesDialog.showModal());
+  document.querySelector(".all-memories-close").addEventListener("click", () => allMemoriesDialog.close());
+  allMemoriesDialog.addEventListener("click", event => { if (event.target === allMemoriesDialog) allMemoriesDialog.close(); });
 
   // Photo Stories before-and-after comparison
   document.querySelectorAll(".compare-slider").forEach(slider => {

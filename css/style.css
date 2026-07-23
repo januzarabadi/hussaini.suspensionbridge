@@ -3095,3 +3095,216 @@ h3 {
     background: rgba(10, 47, 37, 0.97);
   }
 }
+
+/* Visitor memories */
+.visitor-memories-heading {
+  max-width: 680px;
+  margin: 0 auto 38px;
+  text-align: center;
+}
+.visitor-memories-heading h2 {
+  margin: 8px 0 12px;
+}
+.visitor-memories-heading > p:last-child {
+  margin: 0;
+  color: var(--muted);
+}
+.visitor-showcase {
+  display: grid;
+  grid-template-columns: 1.2fr 0.9fr 0.9fr;
+  grid-template-rows: 230px 230px;
+  gap: 16px;
+}
+.visitor-showcase .visitor-card {
+  margin: 0;
+  min-height: 0;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 18px;
+  box-shadow: var(--shadow-card);
+}
+.visitor-showcase .visitor-card-featured {
+  grid-row: span 2;
+}
+.visitor-showcase .visitor-card-tall {
+  grid-row: span 2;
+}
+.visitor-showcase .visitor-card-wide {
+  grid-column: span 1;
+}
+.visitor-showcase .visitor-card img {
+  height: 100%;
+  min-height: 0;
+}
+.visitor-showcase .visitor-card span,
+.all-memories-grid .visitor-card span {
+  padding: 48px 18px 17px;
+}
+.visitor-showcase .visitor-card:hover {
+  box-shadow: var(--shadow-card-hover);
+}
+.visitor-memories-actions {
+  display: flex;
+  justify-content: center;
+  margin: 30px 0;
+}
+.visitor-memories-trigger {
+  border: 0;
+  background: transparent;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+.visitor-memories-trigger span {
+  display: inline-block;
+  margin-left: 5px;
+  transition: transform 0.2s ease;
+}
+.visitor-memories-trigger:hover span,
+.visitor-memories-trigger:focus-visible span {
+  transform: translateX(4px);
+}
+.visitor-upload {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 32px;
+  padding: clamp(24px, 4vw, 38px);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--surface);
+  box-shadow: var(--shadow-card);
+}
+.visitor-upload h3 {
+  margin: 7px 0 9px;
+}
+.visitor-upload > div > p:last-child {
+  max-width: 560px;
+  margin: 0;
+  color: var(--muted);
+}
+.visitor-upload-action {
+  text-align: center;
+}
+.visitor-upload-action .button {
+  white-space: nowrap;
+}
+.visitor-upload-action .form-note {
+  max-width: 240px;
+  margin: 10px auto 0;
+}
+.all-memories-dialog {
+  width: min(1120px, calc(100vw - 32px));
+  max-height: min(850px, calc(100vh - 32px));
+  padding: clamp(22px, 4vw, 42px);
+  border: 0;
+  border-radius: 20px;
+  background: var(--section-c);
+  color: var(--ink);
+  box-shadow: 0 24px 80px rgba(3, 8, 20, 0.38);
+}
+.all-memories-dialog::backdrop {
+  background: rgba(3, 8, 20, 0.76);
+  backdrop-filter: blur(5px);
+}
+.all-memories-dialog-header {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 26px;
+}
+.all-memories-dialog-header h2 {
+  margin: 7px 0 0;
+}
+.all-memories-close {
+  flex: 0 0 auto;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.all-memories-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.all-memories-grid .visitor-card {
+  min-height: 245px;
+  margin: 0;
+  border-radius: 14px;
+}
+.all-memories-grid .visitor-card img {
+  height: 100%;
+  min-height: 245px;
+}
+@media (max-width: 850px) {
+  .visitor-showcase {
+    grid-template-columns: 1.1fr 0.9fr;
+    grid-template-rows: 250px 210px;
+  }
+  .visitor-showcase .visitor-card-featured {
+    grid-row: span 2;
+  }
+  .visitor-showcase .visitor-card-tall {
+    grid-row: auto;
+  }
+  .visitor-showcase .visitor-card-wide {
+    grid-column: auto;
+  }
+  .visitor-upload {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .visitor-upload > div > p:last-child {
+    margin-right: auto;
+    margin-left: auto;
+  }
+  .all-memories-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 560px) {
+  .visitor-memories-heading {
+    margin-bottom: 26px;
+    text-align: left;
+  }
+  .visitor-showcase {
+    display: flex;
+    gap: 14px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: thin;
+  }
+  .visitor-showcase .visitor-card,
+  .visitor-showcase .visitor-card-featured,
+  .visitor-showcase .visitor-card-tall,
+  .visitor-showcase .visitor-card-wide {
+    flex: 0 0 min(80vw, 315px);
+    height: 390px;
+    scroll-snap-align: start;
+  }
+  .visitor-upload {
+    gap: 20px;
+    padding: 24px 18px;
+  }
+  .all-memories-dialog {
+    width: calc(100vw - 20px);
+    padding: 22px 16px;
+  }
+  .all-memories-dialog-header {
+    margin-bottom: 20px;
+  }
+  .all-memories-grid {
+    grid-template-columns: 1fr;
+  }
+  .all-memories-grid .visitor-card,
+  .all-memories-grid .visitor-card img {
+    min-height: 280px;
+  }
+}

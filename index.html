@@ -288,14 +288,30 @@
     <!-- Visitor Gallery -->
     <section class="section visitor-stories" id="visitor-stories">
       <div class="container">
-        <div class="section-heading reveal"><div><p class="eyebrow">Shared memories</p><h2>Visitor Gallery</h2></div><p>Moments from travellers who crossed, paused, and carried Hunza home in memory.</p></div>
-        <div class="visitor-gallery">
-          <button class="visitor-card reveal" data-image="images/visitor-1.jpg" data-caption="Amina Khan · Pakistan · 2024"><img src="images/visitor-1.jpg" alt="Amina Khan visiting Hussaini Suspension Bridge" loading="lazy"><span><strong>Amina Khan</strong><small>Pakistan · 2024</small></span></button>
-          <button class="visitor-card reveal" data-image="images/visitor-2.jpg" data-caption="Omar Rahman · UAE · 2023"><img src="images/visitor-2.jpg" alt="Omar Rahman visiting Hussaini Suspension Bridge" loading="lazy"><span><strong>Omar Rahman</strong><small>UAE · 2023</small></span></button>
+        <div class="visitor-memories-heading reveal">
+          <p class="eyebrow">Shared memories</p>
+          <h2>Visitor Memories</h2>
+          <p>Explore moments shared by travelers who visited Hussaini Suspension Bridge.</p>
+        </div>
+        <div class="visitor-showcase" aria-label="Featured visitor memories">
+          <button class="visitor-card visitor-card-featured reveal" data-image="images/visitor-1.jpg" data-caption="Amina Khan · Pakistan · 2024"><img src="images/visitor-1.jpg" alt="Amina Khan visiting Hussaini Suspension Bridge" loading="lazy"><span><strong>Amina Khan</strong><small>Pakistan · 2024</small></span></button>
+          <button class="visitor-card visitor-card-tall reveal" data-image="images/visitor-2.jpg" data-caption="Omar Rahman · UAE · 2023"><img src="images/visitor-2.jpg" alt="Omar Rahman visiting Hussaini Suspension Bridge" loading="lazy"><span><strong>Omar Rahman</strong><small>UAE · 2023</small></span></button>
           <button class="visitor-card reveal" data-image="images/visitor-3.jpg" data-caption="Elena Rossi · Italy · 2024"><img src="images/visitor-3.jpg" alt="Elena Rossi visiting Hussaini Suspension Bridge" loading="lazy"><span><strong>Elena Rossi</strong><small>Italy · 2024</small></span></button>
-          <button class="visitor-card reveal" data-image="images/visitor-4.jpg" data-caption="Noah Williams · United Kingdom · 2022"><img src="images/visitor-4.jpg" alt="Noah Williams visiting Hussaini Suspension Bridge" loading="lazy"><span><strong>Noah Williams</strong><small>United Kingdom · 2022</small></span></button>
-          <button class="visitor-card reveal" data-image="images/visitor-5.jpg" data-caption="Sana Iqbal · Pakistan · 2023"><img src="images/visitor-5.jpg" alt="Sana Iqbal visiting Hussaini Suspension Bridge" loading="lazy"><span><strong>Sana Iqbal</strong><small>Pakistan · 2023</small></span></button>
-          <button class="visitor-card reveal" data-image="images/visitor-6.jpg" data-caption="Kai Chen · Singapore · 2024"><img src="images/visitor-6.jpg" alt="Kai Chen visiting Hussaini Suspension Bridge" loading="lazy"><span><strong>Kai Chen</strong><small>Singapore · 2024</small></span></button>
+          <button class="visitor-card visitor-card-wide reveal" data-image="images/visitor-4.jpg" data-caption="Noah Williams · United Kingdom · 2022"><img src="images/visitor-4.jpg" alt="Noah Williams visiting Hussaini Suspension Bridge" loading="lazy"><span><strong>Noah Williams</strong><small>United Kingdom · 2022</small></span></button>
+        </div>
+        <div class="visitor-memories-actions reveal">
+          <button class="text-link visitor-memories-trigger" type="button" aria-haspopup="dialog" aria-controls="all-memories-dialog">View All Memories <span>→</span></button>
+        </div>
+        <div class="visitor-upload reveal" aria-labelledby="visitor-upload-title">
+          <div>
+            <p class="eyebrow">Join the gallery</p>
+            <h3 id="visitor-upload-title">Share Your Adventure</h3>
+            <p>Captured an unforgettable moment at Hussaini Suspension Bridge? We'd love to feature your photo in our visitor gallery.</p>
+          </div>
+          <div class="visitor-upload-action">
+            <a class="button button-primary ripple" href="https://docs.google.com/forms/d/e/1FAIpQLScLdmZvg3vpBOU539xEmsvb7vzaPw3MziQ_g7yX2MAGFTfTDw/viewform?usp=dialog" target="_blank" rel="noopener">📷 Upload Photo</a>
+            <p class="form-note">Submitted photos may be reviewed before appearing in the public gallery.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -391,19 +407,6 @@
             <p class="form-note">No account is required to submit a review.</p>
             <p class="form-status" id="review-status" role="status" aria-live="polite" hidden>Thank you for sharing your experience with Hussaini Suspension Bridge!</p>
           </form>
-          <div class="share-adventure reveal" id="share-adventure" aria-labelledby="share-adventure-title">
-            <div class="share-adventure-copy">
-              <p class="eyebrow">Join the gallery</p>
-              <h3 id="share-adventure-title">Share Your Adventure</h3>
-              <p>Captured an unforgettable moment at Hussaini Suspension Bridge? We'd love to feature your photo in our visitor gallery.</p>
-            </div>
-            <div class="share-adventure-panel">
-              <a class="button button-primary ripple" href="https://docs.google.com/forms/d/e/1FAIpQLScLdmZvg3vpBOU539xEmsvb7vzaPw3MziQ_g7yX2MAGFTfTDw/viewform?usp=dialog" target="_blank" rel="noopener">📷 Upload Photo</a>
-              <p class="form-note">Thank you for sharing your adventure! After submitting your photo, you can return to this page.</p>
-              <p class="form-note">Uploading photos requires signing in with a Google account.</p>
-              <p class="form-note muted">Submitted photos may be reviewed before appearing in the public gallery.</p>
-            </div>
-          </div>
         </div>
       </div>
     </section>
@@ -437,6 +440,17 @@
 
   <button class="scroll-top" aria-label="Scroll to top">↑</button>
   <dialog class="lightbox" aria-label="Image viewer"><button class="lightbox-close" aria-label="Close image viewer">×</button><img src="" alt=""><p></p></dialog>
+  <dialog class="all-memories-dialog" id="all-memories-dialog" aria-labelledby="all-memories-title">
+    <div class="all-memories-dialog-header"><div><p class="eyebrow">Every journey has a story</p><h2 id="all-memories-title">All Visitor Memories</h2></div><button class="all-memories-close" type="button" aria-label="Close all visitor memories">×</button></div>
+    <div class="all-memories-grid">
+      <button class="visitor-card" data-image="images/visitor-1.jpg" data-caption="Amina Khan · Pakistan · 2024"><img src="images/visitor-1.jpg" alt="Amina Khan visiting Hussaini Suspension Bridge" loading="lazy"><span><strong>Amina Khan</strong><small>Pakistan · 2024</small></span></button>
+      <button class="visitor-card" data-image="images/visitor-2.jpg" data-caption="Omar Rahman · UAE · 2023"><img src="images/visitor-2.jpg" alt="Omar Rahman visiting Hussaini Suspension Bridge" loading="lazy"><span><strong>Omar Rahman</strong><small>UAE · 2023</small></span></button>
+      <button class="visitor-card" data-image="images/visitor-3.jpg" data-caption="Elena Rossi · Italy · 2024"><img src="images/visitor-3.jpg" alt="Elena Rossi visiting Hussaini Suspension Bridge" loading="lazy"><span><strong>Elena Rossi</strong><small>Italy · 2024</small></span></button>
+      <button class="visitor-card" data-image="images/visitor-4.jpg" data-caption="Noah Williams · United Kingdom · 2022"><img src="images/visitor-4.jpg" alt="Noah Williams visiting Hussaini Suspension Bridge" loading="lazy"><span><strong>Noah Williams</strong><small>United Kingdom · 2022</small></span></button>
+      <button class="visitor-card" data-image="images/visitor-5.jpg" data-caption="Sana Iqbal · Pakistan · 2023"><img src="images/visitor-5.jpg" alt="Sana Iqbal visiting Hussaini Suspension Bridge" loading="lazy"><span><strong>Sana Iqbal</strong><small>Pakistan · 2023</small></span></button>
+      <button class="visitor-card" data-image="images/visitor-6.jpg" data-caption="Kai Chen · Singapore · 2024"><img src="images/visitor-6.jpg" alt="Kai Chen visiting Hussaini Suspension Bridge" loading="lazy"><span><strong>Kai Chen</strong><small>Singapore · 2024</small></span></button>
+    </div>
+  </dialog>
   <script src="js/config.js"></script>
   <script src="js/supabase.bundle.js"></script>
   <script src="js/script.js"></script>
