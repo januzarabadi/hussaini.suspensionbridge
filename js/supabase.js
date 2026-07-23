@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (!config.url || !config.publishableKey) {
     loading?.remove();
     showStatus(
-      "Reviews are temporarily unavailable. Add the Supabase URL and publishable key to js/supabase-config.js.",
+      "Reviews are temporarily unavailable. Add the Supabase URL and publishable key to js/config.js.",
       true
     );
     submitButton.disabled = true;
