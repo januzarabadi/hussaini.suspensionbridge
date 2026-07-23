@@ -2,7 +2,16 @@
 :root {
   --ink: #0f172a;
   --surface: #ffffff;
-  --mist: #f1f5f9;
+  --mist: #eaf7f1;
+  --section-a: #eaf7f1;
+  --section-b: #dff4ea;
+  --section-c: #f3fbf7;
+  --card-hover: #f8fffc;
+  --hero-from: #0b3d2e;
+  --hero-to: #14532d;
+  --nav-scroll: #0a2f25;
+  --forest: #0b3d2e;
+  --footer-bg: #052e16;
   --text: #1e293b;
   --muted: #475569;
   --line: #cbd5e1;
@@ -32,7 +41,7 @@ html {
 }
 body {
   margin: 0;
-  background: var(--mist);
+  background: var(--section-a);
   color: var(--text);
   font-family: var(--inter);
   font-size: 16px;
@@ -112,7 +121,7 @@ h3 {
   transition: 0.35s;
 }
 .site-header.scrolled {
-  background: rgba(15, 23, 42, 0.87);
+  background: var(--nav-scroll);
   backdrop-filter: blur(14px);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.14);
 }
@@ -267,12 +276,8 @@ h3 {
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    90deg,
-    rgba(8, 15, 35, 0.86),
-    rgba(10, 20, 45, 0.45) 53%,
-    rgba(8, 15, 35, 0.2)
-  );
+  background: linear-gradient(135deg, var(--hero-from), var(--hero-to));
+  opacity: 0.82;
 }
 .hero-content {
   position: relative;
@@ -2603,38 +2608,84 @@ h3 {
   }
 }
 
-/* Mountain-inspired palette normalization */
+/* Emerald Mountain background theme */
+.site-header.scrolled {
+  background: var(--nav-scroll);
+}
+.hero-overlay {
+  background: linear-gradient(135deg, var(--hero-from), var(--hero-to));
+  opacity: 0.82;
+}
+
+/* Alternating section backgrounds */
+.about,
+.guide,
+.people,
+.photo-stories,
+.facts-section,
+.testimonials {
+  background: var(--section-a);
+}
+.gallery,
+.rules-section,
+.zarabad,
+.location-map,
+.nearby,
+.faq {
+  background: var(--section-b);
+}
+.experiences,
+.construction,
+.timeline-section,
+.visitor-stories,
+.stay-food {
+  background: var(--section-c);
+}
+
+/* Dark forest panels for contrast-critical sections */
+.statistics,
+.drone-video,
+.video-frame,
+.visit-section {
+  background: var(--forest);
+}
+.lightbox {
+  background: var(--forest);
+}
+.site-footer {
+  background: var(--footer-bg);
+  color: var(--footer-text);
+}
+
+/* Cards stay white with soft emerald hover */
 .skip-link,
 .image-badge,
-.gallery,
-.about,
-.construction,
-.guide,
-.zarabad,
-.photo-stories,
-.visitor-stories,
-.nearby,
-.faq,
 .experience-card,
 .testimonial,
 .place-card,
+.fact-card,
 .ticket-info,
 .visitor-guidelines,
 .quick-info-card,
-.guideline-card {
+.guideline-card,
+.gallery-item span b {
   background: var(--surface);
 }
-.site-header.scrolled {
-  background: rgba(15, 23, 42, 0.92);
+.experience-card:hover,
+.place-card:hover,
+.fact-card:hover,
+.testimonial:hover {
+  background: var(--card-hover);
 }
-.hero-overlay {
-  background: linear-gradient(
-    90deg,
-    rgba(15, 23, 42, 0.88),
-    rgba(15, 23, 42, 0.5) 53%,
-    rgba(15, 23, 42, 0.24)
-  );
+.ticket-info-grid p,
+.construction-facts div,
+.quick-info-card,
+.guide-notice,
+.construction-note,
+.guideline-card-wide {
+  background: var(--section-c);
 }
+
 .hero h1 em,
 .eyebrow.light,
 .stat strong {
@@ -2674,27 +2725,6 @@ h3 {
   background: var(--accent);
   color: var(--primary);
 }
-.experiences,
-.people,
-.location-map,
-.stay-food,
-.facts-section,
-.testimonials,
-.timeline-section,
-.rules-section {
-  background: var(--mist);
-}
-.gallery,
-.about,
-.construction,
-.guide,
-.zarabad,
-.photo-stories,
-.visitor-stories,
-.nearby,
-.faq {
-  background: var(--surface);
-}
 .experience-card,
 .testimonial,
 .place-card,
@@ -2731,7 +2761,6 @@ h3 {
 .ticket-info-grid p,
 .construction-facts div,
 .quick-info-card {
-  background: var(--mist);
   border: 1px solid var(--line);
 }
 .ticket-price {
@@ -2745,14 +2774,12 @@ h3 {
 .guide-notice,
 .construction-note {
   border-left-color: var(--primary);
-  background: var(--mist);
 }
 .gallery-item:after,
 .attraction-card:after {
-  background: linear-gradient(transparent, rgba(15, 23, 42, 0.78));
+  background: linear-gradient(transparent, rgba(5, 46, 22, 0.78));
 }
 .gallery-item span b {
-  background: var(--surface);
   color: var(--ink);
 }
 .place-actions a {
@@ -2773,13 +2800,8 @@ h3 {
   border-color: var(--secondary);
   color: var(--surface);
 }
-.drone-video,
-.video-frame,
-.lightbox {
-  background: var(--ink);
-}
 .map-embed {
-  background: var(--line);
+  background: var(--section-b);
 }
 .avatar,
 .avatar.teal {
@@ -2793,10 +2815,6 @@ h3 {
 .stars,
 .place-rating {
   color: var(--gold);
-}
-.visit-section,
-.site-footer {
-  background: var(--ink);
 }
 .visit-card,
 .visit-cta {
@@ -2817,9 +2835,6 @@ h3 {
 .contact-form input:focus,
 .contact-form textarea:focus {
   border-color: var(--primary);
-}
-.site-footer {
-  color: var(--footer-text);
 }
 .footer-grid > div > p {
   color: var(--footer-muted);
@@ -2855,4 +2870,9 @@ h3 {
 .nav-menu > a:hover,
 .nav-menu > a.active {
   color: var(--primary);
+}
+@media (max-width: 850px) {
+  .nav-menu {
+    background: rgba(10, 47, 37, 0.97);
+  }
 }
